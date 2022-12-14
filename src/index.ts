@@ -5,6 +5,13 @@ export function bind<T extends Function>(target: object, propertyKey: string, de
     
     return {
         configurable: true,
+        set(value) {
+            Object.defineProperty(this, propertyKey, {
+                value: value,
+                configurable: true,
+                writable: true
+            });
+        },
         get(this: T): T {
             const bound: T = descriptor.value!.bind(this);
             // Credits to https://github.com/andreypopp/autobind-decorator for memoizing the result of bind against a symbol on the instance.
