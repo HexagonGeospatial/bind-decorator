@@ -7,6 +7,13 @@ define(["require", "exports"], function (require, exports) {
         }
         return {
             configurable: true,
+            set: function (value) {
+                Object.defineProperty(this, propertyKey, {
+                    value: value,
+                    configurable: true,
+                    writable: true
+                });
+            },
             get: function () {
                 var bound = descriptor.value.bind(this);
                 // Credits to https://github.com/andreypopp/autobind-decorator for memoizing the result of bind against a symbol on the instance.

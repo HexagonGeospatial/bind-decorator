@@ -37,7 +37,7 @@ jspm_packages
 .node_repl_history
 
 *.map
-__tests__/*.js
+*.js
 */*.d.ts
 index.d.ts
 lcov.info
